@@ -26,8 +26,8 @@ export class InicioComponent implements OnInit {
   constructor(
     private router : Router,
     private temaService: TemaService,
-    private postagemService: PostagemService) { }
-    private authService: AuthService
+    private postagemService: PostagemService,
+    private authService: AuthService) { }
 
   ngOnInit() {
 
@@ -36,8 +36,9 @@ export class InicioComponent implements OnInit {
       alert('sua seção expirou, faça login novamente')
       this.router.navigate(['/entrar'])
     }
-    this.listarTemas()
-    this.listarTodasPostagens()
+    this.authService.refreshToken();
+    this.listarTemas();
+    this.listarTodasPostagens();
   }
 
   listarTemas(){
@@ -51,8 +52,8 @@ export class InicioComponent implements OnInit {
       this.tema = resp
     })
   }
-  findByIdUser(){
-    this.authService.getByIdUser(this.idUsuario).subscribe((resp: Usuario)=>{
+  findByIdUsuario(){
+    this.authService.getByIdUsuario(this.idUsuario).subscribe((resp: Usuario)=>{
       this.usuario = resp
     })
   }
