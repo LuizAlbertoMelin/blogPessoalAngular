@@ -49,7 +49,8 @@
       <div class="tab-content mt-3" id="myTabContent">
         <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="todasPostagens-tab">
           <div class="d-flex flex-wrap">
-            <div class="card text-center m-3" style="width: 18rem;" *ngFor="let postagem of listarPostagens">
+            <div class="card text-center m-3" style="width: 18rem;"
+            *ngFor="let postagem of listarPostagens | orderBy: key : reverse">
 
               <div class="card-body">
                 <h5 class="card-title">{{postagem.titulo}}</h5>
@@ -68,7 +69,7 @@
       <div class="tab-content mt-3" id="myTabContent">
         <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="todasPostagens-tab">
           <div class="d-flex flex-wrap">
-            <div class="card text-center m-3" style="width: 18rem;" *ngFor="let postagem of usuario.postagem">
+            <div class="card text-center m-3" style="width: 18rem;" *ngFor="let postagem of usuario.postagem | orderBy: key : reverse">
 
               <div class="card-body">
                 <h5 class="card-title">{{postagem.titulo}}</h5>
@@ -136,7 +137,7 @@
         <div class="form-group">
           <label for="tema">Escolha um tema ou <a data-dismiss="modal" routerLink="/tema">cadastre um novo</a> </label>
           <select name="tema" id="tema" class="form-control" (change)="buscarTemaPorId()" [(ngModel)]="idTema">
-            <option *ngFor="let tema of listaTemas" value="{{tema.id}}">{{tema.descricao}}</option>
+            <option *ngFor="let tema of listaTemas | orderBy: key : reverse" value="{{tema.id}}">{{tema.descricao}}</option>
           </select>
         </div>
 

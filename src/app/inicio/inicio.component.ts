@@ -24,6 +24,10 @@ export class InicioComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
   listarPostagens: Postagem[]
+
+  key = 'data'
+  reverse = true
+  
   constructor(
     private router : Router,
     private temaService: TemaService,
