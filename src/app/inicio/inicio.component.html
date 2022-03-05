@@ -34,8 +34,9 @@
         href="#nav-todasPostagens" role="tab" aria-controls="nav-todasPostagens" aria-selected="true">todas
         Postagens</a>
 
-      <a (click)="findByIdUsuario()" class="nav-link text-secondary font-weight-bold" id="nav-minhasPostagens-tab" data-toggle="tab"
-        href="#nav-minhasPostagens" role="tab" aria-controls="nav-minhasPostagens" aria-selected="false">minhas
+      <a (click)="findByIdUsuario()" class="nav-link text-secondary font-weight-bold" id="nav-minhasPostagens-tab"
+        data-toggle="tab" href="#nav-minhasPostagens" role="tab" aria-controls="nav-minhasPostagens"
+        aria-selected="false">minhas
         Postagens</a>
 
       <a class="nav-link text-secondary font-weight-bold" id="nav-postagensTema-tab" data-toggle="tab"
@@ -44,13 +45,22 @@
     </div>
   </nav>
 
+
+
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-todasPostagens" role="tabpanel" aria-labelledby="nav-todasPostagens-tab">
+      <div class="row d-flex justify-content-center mt-4 mb-4">
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" class="form-control" name="" id="titulo" placeholder="Digite um titulo de postagem pra pesquisar" [(ngModel)]="tituloPost" (keyup)="findByTituloPostagem()">
+          </div>
+        </div>
+      </div>
       <div class="tab-content mt-3" id="myTabContent">
         <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="todasPostagens-tab">
           <div class="d-flex flex-wrap">
             <div class="card text-center m-3" style="width: 18rem;"
-            *ngFor="let postagem of listarPostagens | orderBy: key : reverse">
+              *ngFor="let postagem of listarPostagens | orderBy: key : reverse">
 
               <div class="card-body">
                 <h5 class="card-title">{{postagem.titulo}}</h5>
@@ -69,7 +79,8 @@
       <div class="tab-content mt-3" id="myTabContent">
         <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="todasPostagens-tab">
           <div class="d-flex flex-wrap">
-            <div class="card text-center m-3" style="width: 18rem;" *ngFor="let postagem of usuario.postagem | orderBy: key : reverse">
+            <div class="card text-center m-3" style="width: 18rem;"
+              *ngFor="let postagem of usuario.postagem | orderBy: key : reverse">
 
               <div class="card-body">
                 <h5 class="card-title">{{postagem.titulo}}</h5>
@@ -87,11 +98,18 @@
       </div>
     </div>
 
-    <div class="tab-pane fade" id="nav-postagensTema" role="tabpanel" aria-labelledby="nav-postagensTema-tab">postagem
+    <div class="tab-pane fade" id="nav-postagensTema" role="tabpanel" aria-labelledby="nav-postagensTema-tab">
+      <div class="row d-flex justify-content-center mt-4 mb-4">
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" class="form-control" name="" id="titulo" placeholder="Digite tema pra pesquisar" [(ngModel)]="nomeTema" (keyup)="findByNomeTema()">
+          </div>
+        </div>
+      </div>
       <div class="tab-content mt-3" id="myTabContent">
         <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="todasPostagens-tab">
-          <div class="d-flex flex-wrap" *ngFor='let tema of listaTemas'>
-            <div class="card text-center m-3" style="width: 18rem;" *ngFor="let postagem of tema.postagem">
+          <div class="d-flex flex-wrap" *ngFor='let tema of listaTemas '>
+            <div class="card text-center m-3" style="width: 18rem;" *ngFor="let postagem of tema.postagem | orderBy: key : reverse">
 
               <div class="card-body">
                 <h5 class="card-title">{{postagem.titulo}}</h5>
@@ -137,7 +155,8 @@
         <div class="form-group">
           <label for="tema">Escolha um tema ou <a data-dismiss="modal" routerLink="/tema">cadastre um novo</a> </label>
           <select name="tema" id="tema" class="form-control" (change)="buscarTemaPorId()" [(ngModel)]="idTema">
-            <option *ngFor="let tema of listaTemas | orderBy: key : reverse" value="{{tema.id}}">{{tema.descricao}}</option>
+            <option *ngFor="let tema of listaTemas | orderBy: key : reverse" value="{{tema.id}}">{{tema.descricao}}
+            </option>
           </select>
         </div>
 

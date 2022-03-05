@@ -24,6 +24,10 @@ getByIdPostagem(id: number): Observable<Postagem>{
   return this.http.get<Postagem>(`https://blogpessoalluiz.herokuapp.com/postagens/${id}`, this.token)
 }
 
+getByTituloPostagem(titulo: string): Observable<Postagem[]>{
+  return this.http.get<Postagem[]>(`https://blogpessoalluiz.herokuapp.com/postagens/titulo/${titulo}`, this.token)
+}
+
 postTema(postagem: Postagem): Observable<Postagem>{
   return this.http.post<Postagem>('https://blogpessoalluiz.herokuapp.com/postagens', postagem, this.token)
 
@@ -36,5 +40,6 @@ putPostagem(postagem: Postagem): Observable<Postagem>{
 deletePostage(id: number){
   return this.http.delete(`https://blogpessoalluiz.herokuapp.com/postagens/${id}`, this.token)
 }
+
 
 }
