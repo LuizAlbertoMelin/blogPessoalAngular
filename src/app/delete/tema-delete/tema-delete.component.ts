@@ -15,6 +15,8 @@ export class TemaDeleteComponent implements OnInit {
   constructor(private temaService: TemaService, private router: Router,private route: ActivatedRoute){ }
 
   ngOnInit(): void {
+    window.scroll(0,0)
+
     if(environment.token == ''){
       alert('sua seção expirou, faça login novamente')
       this.router.navigate(['/entrar'])
