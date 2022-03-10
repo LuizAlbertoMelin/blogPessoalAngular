@@ -13,7 +13,11 @@ import { environment } from 'src/environments/environment.prod';
 export class TemaEditComponent implements OnInit {
   tema: Tema = new Tema()
 
-  constructor(private temaService: TemaService, private router: Router, private route: ActivatedRoute, private alertas: AlertasService) { }
+  constructor(
+    private temaService: TemaService,
+    private router: Router,
+     private route: ActivatedRoute,
+     private alertas: AlertasService) { }
 
   ngOnInit() {
     window.scroll(0,0)
